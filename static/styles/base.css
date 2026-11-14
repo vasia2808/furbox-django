@@ -1,0 +1,228 @@
+:root {
+    --bg: #191319;
+    --text: #c9c9c9;
+    --link: #c9c9c9;
+    --link-hover: color-mix(var(--link) 70%, transparent);
+    --accent: #cb4a45;
+    --accent-link-hover: color-mix(var(--accent) 70%, transparent);
+    --button: #bf423e;
+    --scrollbar-color: color-mix(var(--text) 70%, transparent) transparent;
+
+    --header-bg: #282127;
+    --brand-hover: color-mix(var(--accent) 70%, transparent);
+    --nav-link: #c9c9c9;
+    --nav-link-hover: color-mix(var(--nav-link) 70%, transparent);
+    --placeholder: color-mix(var(--text) 45%, transparent);
+
+    --border-width: 2px;
+    --border-radius: 5px;
+
+    --footer-bg: #282127;
+    --footer-link: #c9c9c9;
+    --footer-link-hover: color-mix(var(--footer-link) 70%, transparent);
+
+    --tooltip-bg: #282127;
+}
+
+* {
+    scrollbar-color: var(--scrollbar-color);
+}
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: var(--bg);
+}
+
+/* Header */
+
+header {
+    background-color: var(--header-bg);
+}
+
+.navbar-brand {
+    color: var(--accent);
+    font-weight: bold;
+
+    &:focus {
+        color: var(--accent);
+    }
+
+    &:hover,
+    &:focus:hover {
+        color: var(--brand-hover);
+    }
+}
+
+.navbar-toggler {
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
+}
+
+.nav-link {
+    color: var(--nav-link);
+
+    &:focus {
+        color: var(--nav-link);
+    }
+
+    &:hover,
+    &:focus:hover {
+        color: var(--nav-link-hover);
+    }
+}
+
+/* Footer */
+
+footer {
+    background-color: var(--footer-bg);
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        margin: 0.4rem;
+    }
+}
+
+.footer-link {
+    color: var(--footer-link);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--footer-link-hover);
+    }
+}
+
+.footer-link-img {
+    width: 3rem;
+}
+
+/* UI Elements */
+
+.underline-link {
+    text-decoration: underline;
+    color: var(--link);
+
+    &:hover {
+        color: var(--link-hover)
+    }
+}
+
+.input {
+    background-color: var(--bg);
+    color: var(--text);
+    border-width: 0;
+    border-radius: var(--border-radius);
+
+    &:focus {
+        background-color: var(--bg);
+        color: var(--text);
+        box-shadow: none;
+    }
+
+    &::placeholder {
+        color: var(--placeholder);
+    }
+
+    &::file-selector-button {
+        background-color: var(--bg);
+        color: var(--button);
+        border-width: var(--border-width);
+        border-top-left-radius: var(--border-radius);
+        border-bottom-left-radius: var(--border-radius);
+        border-color: var(--button);
+        font-weight: bold;
+    }
+
+    &:hover::file-selector-button {
+        border-color: var(--button);
+        background-color: var(--button) !important;
+        color: var(--bg);
+    }
+}
+
+.radio {
+    background-color: var(--bg);
+    cursor: pointer;
+    border-color: var(--text);
+
+    &:checked {
+        border-color: var(--button);
+        background-color: var(--button);
+    }
+
+    &:focus {
+        border-color: var(--button);
+        box-shadow: none;
+    }
+}
+
+.text-area {
+    background-color: var(--bg);
+    color: var(--text);
+    border-width: 0;
+    border-radius: var(--border-radius);
+
+    &:focus {
+        background-color: var(--bg);
+        color: var(--text);
+        box-shadow: none;
+    }
+
+    &::placeholder {
+        color: var(--placeholder);
+    }
+}
+
+.btn-outline-primary {
+    --bs-btn-padding-y: 0.25rem;
+    --bs-btn-padding-x: 0.7rem;
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
+    border-color: var(--button);
+    color: var(--button);
+    font-weight: bold;
+
+    &:hover,
+    &:active:focus {
+        border-color: var(--button);
+        background-color: var(--button);
+        color: var(--header-bg);
+    }
+}
+
+.btn-outline-white {
+    --bs-btn-padding-y: 0.25rem;
+    --bs-btn-padding-x: 0.7rem;
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
+    border-color: var(--text);
+    color: var(--text);
+    font-weight: bold;
+
+    &:hover,
+    &:active:focus {
+        border-color: var(--text);
+        background-color: var(--text);
+        color: var(--header-bg);
+    }
+}
+
+img {
+    vertical-align: baseline;
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: var(--tooltip-bg);
+    --bs-tooltip-color: var(--text);
+    --bs-tooltip-border-radius: var(--border-radius);
+}
+
+hr {
+    margin-top: 0.3rem;
+    border-width: 0.15rem;
+    color: var(--text);
+}
