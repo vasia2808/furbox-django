@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from main.models import Category, Product, ProductImage
+from main.models import Banner, Category, Product, ProductImage
 
 
 @admin.register(Category)
@@ -39,3 +39,8 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ("date_added",)
 
     inlines = (ProductImageTabulareAdmin,)
+
+
+@admin.register(Banner)
+class BannerAdmin(admin.ModelAdmin):
+    ...

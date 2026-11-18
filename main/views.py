@@ -1,6 +1,6 @@
 from django.views.generic import DetailView, ListView, TemplateView
 
-from main.models import Category, Product
+from main.models import Banner, Category, Product
 from main.utils import q_search
 
 
@@ -9,7 +9,9 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        banners = Banner.objects.all()
         context['title'] = 'FurBox - Your Furry Shop'
+        context['banners'] = banners
         return context
 
 

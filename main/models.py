@@ -59,3 +59,13 @@ class ProductImage(models.Model):
     class Meta:
         db_table = 'product_images'
         ordering = ('id',)
+
+
+class Banner(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.CharField(max_length=150)
+    image = models.ImageField(upload_to='banners_images')
+
+    class Meta:
+            db_table = 'banners'
+            ordering = ('id',)
