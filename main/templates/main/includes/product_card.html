@@ -1,0 +1,15 @@
+{% load static %}
+
+<div class="card">
+    <img src="{{ product.productimage_set.first.image.url }}" class="card-img-top"
+        alt="...">
+    <div class="card-body">
+        <a href="{% url "main:product" product.slug %}" class="card-title">
+            <h5>{% autoescape off %}{% if product.headline %}{{ product.headline }}{% else %}{{ product.name }}{% endif %}{% endautoescape %}</h5>
+        </a>
+        <p class="card-text">{% autoescape off %}{% if product.bodyline %}{{ product.bodyline }}{% else %}{{ product.description }}{% endif %}{% endautoescape %}</p>
+        <p class="card-price">${{ product.price }}</p>
+        <a href="#" class="card-cart" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Add to cart"><img src="{% static "images/product-card/cart-plus-fill.svg" %}"
+                alt=""></a>
+    </div>
+</div>

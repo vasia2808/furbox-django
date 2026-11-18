@@ -1,12 +1,22 @@
 from django.contrib import admin
 
-from main.models import Category, Product
+from main.models import Category, Product, ProductImage
 
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     list_display = ["name"]
+
+
+class ProductImageTabulareAdmin(admin.TabularInline):
+    model = ProductImage
+    extra = 5
+
+
+@admin.register(ProductImage)
+class ProductImageAdmin(admin.ModelAdmin):
+    ...
 
 
 @admin.register(Product)
@@ -21,10 +31,11 @@ class ProductAdmin(admin.ModelAdmin):
         "category",
         "slug",
         "description",
-        "image",
         ("price", "discount"),
         "quantity",
         "date_added",
     ]
 
     readonly_fields = ("date_added",)
+
+    inlines = (ProductImageTabulareAdmin,)

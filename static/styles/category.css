@@ -12,6 +12,7 @@
     padding: 0.7rem;
     background-color: var(--product-list-bg);
     border-radius: var(--border-radius);
+    color: var(--text)
 }
 
 .product-list-header {
@@ -26,7 +27,7 @@
     }
 }
 
-.sort-form {
+.order-form {
     color: var(--text);
 
     select {

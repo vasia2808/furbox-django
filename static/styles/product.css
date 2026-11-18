@@ -35,6 +35,7 @@
         height: unset !important;
         margin: 0 !important;
         border: none !important;
+        flex: 0 1 calc((100% - 2rem) / 5) !important;
 
         img {
             aspect-ratio: 1;

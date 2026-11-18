@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
 
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
@@ -85,6 +86,14 @@ DATABASES = {
         'PASSWORD': 'password',
         'HOST': '192.168.122.31',
         'PORT': '5432',
+    }
+}
+
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": BASE_DIR / 'cache',
     }
 }
 
