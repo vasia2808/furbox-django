@@ -1,7 +1,11 @@
+from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.db.models import Avg
-from django.views.generic import DetailView, ListView, TemplateView
+from django.shortcuts import get_object_or_404, reverse
+from django.views.generic import CreateView, DetailView, ListView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
+from main.forms import ReviewForm
 from main.models import Banner, Category, Product, Review
 from main.utils import q_search
 from wishlists.models import WishlistItem
@@ -106,3 +110,54 @@ class ProductView(DetailView):
         context['page_obj'] = page_obj
         
         return context
+
+
+class ReviewCreateView(LoginRequiredMixin, CreateView):
+    model = Review
+    form_class = ReviewForm
+    template_name = 'main/review_create.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.product = get_object_or_404(
+            Product,
+            slug=kwargs['product_slug']
+        )
+
+        # Проверяем наличие завершённого заказа с товаром
+        has_completed_order = self.product.order_items.filter(
+            order__user=request.user,
+            order__status='Completed'
+        ).exists()
+
+        if not has_completed_order:
+            raise PermissionDenied
+
+        # Проверяем, не оставлял ли пользователь отзыв
+        if Review.objects.filter(
+            user=request.user,
+            product=self.product
+        ).exists():
+            raise PermissionDenied
+
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.product = Product.objects.get(
+            slug=self.kwargs['product_slug']
+        )
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        product = Product.objects.get(slug=self.kwargs.get('product_slug'))
+        
+        context = super().get_context_data(**kwargs)
+        context["product"] = product
+        return context
+    
+
+    def get_success_url(self):
+        return reverse(
+            'main:product',
+            kwargs={'product_slug': self.object.product.slug}
+        ) + '#reviews'

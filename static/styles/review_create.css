@@ -1,0 +1,33 @@
+:root {
+    --review-bg: #282127;
+}
+
+.review-create {
+    max-width: 500px;
+    margin-inline: auto;
+    background-color: var(--review-bg);
+    color: var(--text);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+
+    h2 {
+        color: var(--accent);
+    }
+}
+
+.review-create-form {
+    color: var(--text);
+
+    select {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23c9c9c9' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+        display: inline-block;
+        width: unset;
+        background-color: var(--bg);
+        color: var(--text);
+        border-width: 0;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}

@@ -88,10 +88,10 @@
         <h2>Orders</h2>
         <hr>
         <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-                {% for order in orders %}
+            {% for order in orders %}
+                <div class="accordion-item">
                     <h2 class="accordion-header" id="heading{{ order.id }}">
-                        <button class="accordion-button {% if forloop.counter != 1 %}collapsed{% endif %}}" type="button" data-bs-toggle="collapse"
+                        <button class="accordion-button {% if forloop.counter != 1 %}collapsed{% endif %}" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapse{{ order.id }}" aria-expanded="false" aria-controls="collapse{{ order.id }}">
                             <div class="d-flex justify-content-between w-100">
                                 <span><strong>№ {{ order.id }}</strong><small class="order-date"> {{ order.created_timestamp }}</small></span><span class="me-2"><strong>{{ order.status }}</strong></span>
@@ -106,6 +106,9 @@
                                     <div class="order-item-left">
                                         <a href="{% url 'main:product' item.product.slug %}" class="order-item-link"><img src="{{ item.product.productimage_set.first.image.url }}" alt="" class="order-item-img"><span class="order-item-title">{{ item.product.name }}</span></a>
                                         <span class="item-quantity"><strong>${{ item.price }}</strong> x <strong>{{ item.quantity }}pt.</strong></span>
+                                        {% if order.status == "Completed" and item.product_id not in reviewed_products %}
+                                            <a href="{% url "main:review_create" item.product.slug %}" class="create-review-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Add review"><img src="{% static "images/profile/comments-fill.svg" %}" alt=""></a>
+                                        {% endif %}   
                                     </div>
                                     <span class="order-item-right"><strong>${{ item.products_price }}</strong></span>
                                 </div>
@@ -115,8 +118,8 @@
                             </div>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock content %}

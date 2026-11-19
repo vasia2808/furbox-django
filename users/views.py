@@ -11,6 +11,7 @@ from django.views.generic import CreateView, TemplateView, UpdateView
 
 from carts.models import Cart
 from common.mixins import CacheMixin
+from main.models import Review
 from orders.models import Order, OrderItem
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 from wishlists.models import WishlistItem
@@ -94,16 +95,21 @@ class UserProfileView(LoginRequiredMixin, CacheMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         user = self.get_object()
-
         wishlist_items = WishlistItem.objects.filter(user=user).select_related('product').order_by('-id')
-
         orders = Order.objects.filter(user=self.request.user).prefetch_related(Prefetch('items', queryset=OrderItem.objects.select_related('product'))).order_by('-id')
+
+        reviewed_products = set(
+            Review.objects.filter(
+                user=self.request.user
+            ).values_list('product_id', flat=True)
+        )
 
         context = super().get_context_data(**kwargs)
         context['title'] = 'Profile - FurBox'
         context['wishlist_items'] = wishlist_items
         #context['orders'] = self.set_get_cache(orders, f'user_{self.request.user.id}_orders', 60 * 2)
         context['orders'] = orders
+        context['reviewed_products'] = reviewed_products
 
         return context
 

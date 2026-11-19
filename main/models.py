@@ -71,6 +71,16 @@ class Review(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     created_timestamp = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'reviews'
+        ordering = ('id',)
+        constraints = [
+        models.UniqueConstraint(
+            fields=['user', 'product'],
+            name='unique_user_product_review'
+        )
+    ]
+
 
 class Banner(models.Model):
     title = models.CharField(max_length=150)

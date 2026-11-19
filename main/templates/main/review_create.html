@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "styles/review_create.css" %}">
+{% endblock css %}
+
+{% block content %}
+    <section class="review-create">
+        <h2 class="text-center">Create Review</h2>
+        <hr>
+        <form class="review-create-form" action="{% url "main:review_create" product.slug %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                Product:
+                <a href="{% url "main:product" product.slug %}" class="underline-link">{{ product.name }}</a>
+            </div>
+            <div class="mb-3">
+                <label for="id_rating">Rating:</label>
+                <select class="form-select" id="id_rating" name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control text-area" id="id_text" name="text"
+                    rows="6" placeholder="Input your review"></textarea>
+                {% if form.text.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show">{{ form.text.errors }}</div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Create</button>
+        </form>
+    </section>
+{% endblock content %}
