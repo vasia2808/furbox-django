@@ -89,61 +89,33 @@
         <hr>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
-                <h2 class="accordion-header" id="heading1">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                        <div class="d-flex justify-content-between w-100">
-                            <span><strong>№ 256</strong><small class="order-date"> September 09 2026</small></span><span class="me-2"><strong>Processing</strong></span>
-                        </div>
-                    </button>
-                </h2>
-                <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="order-item">
-                            <div class="order-item-left">
-                                <a href="#" class="order-item-link"><img src="static/images/products/blue_white_kitten_kemono_head_fursuit.webp" alt="" class="order-item-img"><span class="order-item-title">Blue White kitten Kemono Head Fursuit</span></a>
-                                <span class="item-quantity"><strong>$904.02</strong> x <strong>2pt.</strong></span>
+                {% for order in orders %}
+                    <h2 class="accordion-header" id="heading{{ order.id }}">
+                        <button class="accordion-button {% if forloop.counter != 1 %}collapsed{% endif %}}" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse{{ order.id }}" aria-expanded="false" aria-controls="collapse{{ order.id }}">
+                            <div class="d-flex justify-content-between w-100">
+                                <span><strong>№ {{ order.id }}</strong><small class="order-date"> {{ order.created_timestamp }}</small></span><span class="me-2"><strong>{{ order.status }}</strong></span>
                             </div>
-                            <span class="order-item-right"><strong>$1808.04</strong></span>
-                        </div>
-                        <div class="order-item">
-                            <div class="order-item-left">
-                                <a href="#" class="order-item-link"><img src="static/images/products/fursuit_husky_fox_mascot_head.jpg" alt="" class="order-item-img"><span class="order-item-title">Fursuit Husky Fox Mascot</span></a>
-                                <span class="item-quantity"><strong>$347</strong> x <strong>1pt.</strong></span>
+                        </button>
+                    </h2>
+                    <div id="collapse{{ order.id }}" class="accordion-collapse collapse {% if forloop.counter == 1 %}show{% endif %}" aria-labelledby="heading{{ order.id }}"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            {% for item in order.items.all %}
+                                <div class="order-item">
+                                    <div class="order-item-left">
+                                        <a href="{% url 'main:product' item.product.slug %}" class="order-item-link"><img src="{{ item.product.productimage_set.first.image.url }}" alt="" class="order-item-img"><span class="order-item-title">{{ item.product.name }}</span></a>
+                                        <span class="item-quantity"><strong>${{ item.price }}</strong> x <strong>{{ item.quantity }}pt.</strong></span>
+                                    </div>
+                                    <span class="order-item-right"><strong>${{ item.products_price }}</strong></span>
+                                </div>
+                            {% endfor %}
+                            <div class="order-item-total">
+                                Total: <strong>${{ order.items.total_price }}</strong>
                             </div>
-                            <span class="order-item-right"><strong>$347</strong></span>
-                        </div>
-                        <div class="order-item-total">
-                            Total: <strong>$2155.04</strong>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="heading2">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                        <div class="d-flex justify-content-between w-100">
-                            <span><strong>№ 234</strong><small class="order-date"> August 11 2026</small></span><span class="me-2"><strong>Completed</strong></span>
-                        </div>
-                    </button>
-                </h2>
-                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <div class="order-item">
-                            <div class="order-item-left">
-                                <a href="#" class="order-item-link"><img src="static/images/products/calico_cat_kemono_head_fursuit.webp" alt="" class="order-item-img"><span class="order-item-title">Calico Cat Kemono Head Fursuit</span></a>
-                                <span class="item-quantity"><strong>$1180.40</strong> x <strong>1pt.</strong></span>
-                            </div>
-                            <span class="order-item-right"><strong>$1180.40</strong></span>
-                        </div>
-                        <div class="order-item-total">
-                            Total: <strong>$1180.40</strong>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>

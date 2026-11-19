@@ -92,7 +92,7 @@
                             <article class="review">
                                 <div class="review-header">
                                     <h6 class="review-user">{{ review.user.first_name}} {{ review.user.last_name }}</h6>
-                                    <p class="review-date">August 05 2026</p>
+                                    <p class="review-date">{{ review.created_timestamp }}</p>
                                 </div>
                                 <div class="review-rating">
                                     {% for i in "x"|ljust:5 %}<img src="{% if forloop.counter <= review.rating %}{% static "images/rating/star-fill.svg" %}{% else %}{% static "images/rating/star.svg" %}{% endif %}" alt="">{% endfor %}

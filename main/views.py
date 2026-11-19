@@ -93,7 +93,7 @@ class ProductView(DetailView):
         if user.is_authenticated:
             is_wished = WishlistItem.objects.filter(user=user, product=product).exists()
 
-        paginator = Paginator(reviews, 4)
+        paginator = Paginator(reviews, 6)
         page_number = self.request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 

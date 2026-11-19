@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "styles/create_order.css" %}">
+{% endblock css %}
+
+{% block content %}
+    <div id="cart-items-container">
+        {% include "carts/includes/included_cart.html" %}
+    </div>
+    <section class="order-details">
+        <h2>Order details</h2>
+        <hr>
+        <form actoin="{% url "orders:create_order" %}" method="post">
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="id_first_name" class="form-label">First name</label>
+                    <input type="text" class="form-control input" id="id_first_name"
+                        name="first_name"
+                        value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"
+                        placeholder="Input your first name" required>
+                    {% if form.first_name.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{ form.first_name.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="id_last_name" class="form-label">Last Name</label>
+                    <input type="text" class="form-control input" id="id_last_name"
+                        name="last_name"
+                        value="{% if form.last_name.value %}{{ form.last_name.value}}{% endif %}"
+                        placeholder="Input your last name" required>
+                    {% if form.last_name.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{ form.last_name.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <label for="id_phone_number" class="form-label">Phone</label>
+                    <input type="text" class="form-control input" id="id_phone_number" placeholder="Input your phone"
+                        name="phone_number"
+                        value="{% if form.phone_number.value %}{{ form.phone_number.value}}{% endif %}"
+                        required>
+                    {% if form.phone_number.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{ form.phone_number.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="col-md-12">
+                    <label for="delivery" class="form-label me-3">Delivery mothod: </label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input radio" type="radio" name="requires_delivery"
+                            id="id_requires_delivery" value="1" checked>
+                        <label class="form-check-label" for="id_requires_delivery">Delivery</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input radio" type="radio" name="requires_delivery"
+                            id="id_requires_delivery_false" value="0">
+                        <label class="form-check-label" for="id_requires_delivery_false">Self-pickup</label>
+                    </div>
+                </div>
+                <div class="mb-3" id="deliveryAddressField">
+                    <label for="id_delivery_address" class="form-label">Delivery address</label>
+                    <textarea class="form-control text-area" id="id_delivery_address" name="delivery_address"
+                        rows="2" placeholder="Input your address"></textarea>
+                    {% if form.delivery_address.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{ form.delivery_address.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <label class="form-label me-3">Paymant method: </label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input radio" type="radio" name="payment_on_get" id="id_payment_on_get_false"
+                        value="0" checked>
+                    <label class="form-check-label" for="id_payment_on_get_false">Card online</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input radio" type="radio" name="payment_on_get" id="id_payment_on_get"
+                        value="1">
+                    <label class="form-check-label" for="id_payment_on_get">Upon receipt</label>
+                    {% if form.payment_on_get.errors %}
+                        <div class="alert alert-danger alert-dismissible fade show">{{ form.payment_on_get.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary mt-3">Place an order</button>
+        </form>
+    </section>
+{% endblock content %}

@@ -15,7 +15,7 @@
                 {{ message }}
             </div>
         {% endif %}
-        {% if message.tags == 'warning' %}
+        {% if message.tags == 'warning' or message.tags == 'error' %}
             <div id="notification" class="mt-2 position-fixed start-50 translate-middle-x z-3 alert alert-danger fade show custom-shadow" role="alert">
                 {{ message }}
             </div>

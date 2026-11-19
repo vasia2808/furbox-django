@@ -47,8 +47,7 @@ class CreateOrederView(LoginRequiredMixin, FormView):
         
         
                         if product.quantity < quantity:
-                            raise ValidationError(f'Недостаточное количество товара {name} на складе\
-                                                   В наличии - {product.quantity}')
+                            raise ValidationError(f'No product enough {name}')
         
                         OrderItem.objects.create(
                             order=order,
@@ -60,21 +59,20 @@ class CreateOrederView(LoginRequiredMixin, FormView):
                         product.quantity -= quantity
                         product.save()
         
-                    # Очистить корзину пользователя после создания заказа
                     cart_items.delete()
         
-                    messages.success(self.request, 'Заказ оформлен!')
+                    messages.success(self.request, 'Order placed!')
                     return redirect('users:profile')
         except ValidationError as e:
             messages.success(self.request, str(e))
             return redirect('orders:create_order')
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Заполните все обязательные поля')
-        return redirect('orsers:create_order')
+        messages.error(self.request, 'Fill in all required fields!')
+        return redirect('orders:create_order')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Оформление заказа'
+        context['title'] = 'Place an order - FurBox'
         context['order'] = True
         return context

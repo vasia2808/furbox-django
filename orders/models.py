@@ -5,11 +5,11 @@ from main.models import Product
 
 class OrderitemQueryset(models.QuerySet):
     def total_price(self):
-        return sum(cart.products_price() for cart in self)
+        return sum(item.products_price() for item in self)
 
     def total_quantity(self):
         if self:
-            return sum(cart.quantity for cart in self)
+            return sum(item.quantity for item in self)
         return 0
 
 
@@ -49,7 +49,7 @@ class OrderItem(models.Model):
         default=None,
         related_name="order_items",
     )
-    name = models.CharField(max_length=150, verbose_name="Название")
+    name = models.CharField(max_length=150)
     price = models.DecimalField(max_digits=7, decimal_places=2)
     quantity = models.PositiveIntegerField(default=0)
 

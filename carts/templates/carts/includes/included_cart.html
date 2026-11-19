@@ -53,7 +53,7 @@
         </div>
     </div>
     {% if carts and not order %}
-        <a class="btn btn-outline-primary" href="create_order.html">
+        <a class="btn btn-outline-primary" href="{% url "orders:create_order" %}">
             Place an order
         </a>
     {% endif %}
