@@ -1,6 +1,8 @@
+from django.core.paginator import Paginator
+from django.db.models import Avg
 from django.views.generic import DetailView, ListView, TemplateView
 
-from main.models import Banner, Category, Product
+from main.models import Banner, Category, Product, Review
 from main.utils import q_search
 
 
@@ -75,6 +77,23 @@ class ProductView(DetailView):
         return product
 
     def get_context_data(self, **kwargs):
+        product = self.object
+
+        reviews = Review.objects.filter(
+            product=product
+        ).select_related('user').order_by('-created_timestamp')
+
+        average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
+
+        paginator = Paginator(reviews, 4)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
         context = super().get_context_data(**kwargs)
-        context['title'] = self.object.name
+        context['title'] = f'{product.name} - FurBox'
+        context['reviews'] = page_obj
+        context['average_rating'] = average_rating
+        context['reviews_count'] = reviews.count()
+        context['page_obj'] = page_obj
+        
         return context

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load main_tags %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static "styles/product.css" %}">
@@ -48,13 +49,15 @@
                     <h2 class="product-title">{{ product.name }}</h2>
                     <div class="d-flex gap-3 mt-3">
                         <h5 class="product-price">${{ product.price }}</h5>
-                        <div>
-                            <img src="static/images/rating/star-fill.svg" alt="">
-                            <span>4.5/5</span>
-                        </div>
+                        {% if average_rating %}
+                            <div>
+                                <img src="{% static "images/rating/star-fill.svg" %}" alt="">
+                                <span>{{ average_rating|floatformat:1 }}/5</span>
+                            </div>
+                        {% endif %}
                         <a class="comment-count" href="#reviews">
-                            <img src="static/images/product/comments-fill.svg" alt="">
-                            <span>54</span>
+                            <img src="{% static "images/product/comments-fill.svg" %}" alt="">
+                            <span>{{ reviews_count }}</span>
                         </a>
                     </div>
                     <p class="mt-2">
@@ -72,150 +75,55 @@
             </div>
         </div>
     </article>
-    <section class="reviews" id="reviews">
-        <h5>Reviews</h5>
-        <hr>
-        <div class="review-list">
-            <div class="row g-3">
-                <div class="col-12 col-md-6">
-                    <article class="review">
-                        <div class="review-header">
-                            <h6 class="review-user">Edward Elrik</h6>
-                            <p class="review-date">August 05 2026</p>
+    {% if reviews %}
+        <section class="reviews" id="reviews">
+            <h5>Reviews</h5>
+            <hr>
+            <div class="review-list">
+                <div class="row g-3">
+                    {% for review in reviews %}
+                        <div class="col-12 col-md-6">
+                            <article class="review">
+                                <div class="review-header">
+                                    <h6 class="review-user">{{ review.user.first_name}} {{ review.user.last_name }}</h6>
+                                    <p class="review-date">August 05 2026</p>
+                                </div>
+                                <div class="review-rating">
+                                    {% for i in "x"|ljust:5 %}<img src="{% if forloop.counter <= review.rating %}{% static "images/rating/star-fill.svg" %}{% else %}{% static "images/rating/star.svg" %}{% endif %}" alt="">{% endfor %}
+                                </div>
+                                <p class="review-body">
+                                    {{ review.text }}
+                                </p>
+                            </article>
                         </div>
-                        <div class="review-rating">
-                            <img src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star.svg" alt="">
-                        </div>
-                        <p class="review-body">
-                            Absolutely adorable! The leopard print looks amazing, and the rounded kemono-style
-                            design gives the head so much personality. The eyes are especially expressive.
-                            Couldn't be happier!
-                        </p>
-                    </article>
-                </div>
-                <div class="col-12 col-md-6">
-                    <article class="review">
-                        <div class="review-header">
-                            <h6 class="review-user">Naruto Uzumaki</h6>
-                            <p class="review-date">July 11 2026</p>
-                        </div>
-                        <div class="review-rating">
-                            <img src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt="">
-                        </div>
-                        <p class="review-body">
-                            Amazing quality and design! I love how the spotted fur pattern contrasts with the
-                            smooth shape of the head. It has such a unique and playful appearance. Definitely
-                            stands out!
-                        </p>
-                    </article>
-                </div>
-                <div class="col-12 col-md-6">
-                    <article class="review">
-                        <div class="review-header">
-                            <h6 class="review-user">Sakura Haruno</h6>
-                            <p class="review-date">October 19 2026</p>
-                        </div>
-                        <div class="review-rating">
-                            <img src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star.svg" alt=""><img
-                                src="static/images/rating/star.svg" alt="">
-                        </div>
-                        <p class="review-body">
-                            Even better than expected! The combination of the wild leopard pattern and cute
-                            feline features is perfect. The head looks stylish, expressive, and incredibly
-                            charming.
-                        </p>
-                    </article>
-                </div>
-                <div class="col-12 col-md-6">
-                    <article class="review">
-                        <div class="review-header">
-                            <h6 class="review-user">Eikichi Onizuka</h6>
-                            <p class="review-date">October 02 2026</p>
-                        </div>
-                        <div class="review-rating">
-                            <img src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star.svg" alt="">
-                        </div>
-                        <p class="review-body">
-                            Such a beautiful fursuit head! The large eyes give it an adorable expression, while
-                            the leopard spots add a bold and distinctive touch. A perfect mix of cute and wild!
-                        </p>
-                    </article>
-                </div>
-                <div class="col-12 col-md-6">
-                    <article class="review">
-                        <div class="review-header">
-                            <h6 class="review-user">Eren Yeager</h6>
-                            <p class="review-date">November 20 2025</p>
-                        </div>
-                        <div class="review-rating">
-                            <img src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt="">
-                        </div>
-                        <p class="review-body">
-                            I absolutely love this design! The fur pattern is eye-catching, and the overall
-                            shape looks so soft and smooth. It has exactly the playful kemono aesthetic I was
-                            looking for.
-                        </p>
-                    </article>
-                </div>
-                <div class="col-12 col-md-6">
-                    <article class="review">
-                        <div class="review-header">
-                            <h6 class="review-user">Mikasa Ackerman</h6>
-                            <p class="review-date">January 29 2026</p>
-                        </div>
-                        <div class="review-rating">
-                            <img src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt=""><img
-                                src="static/images/rating/star-fill.svg" alt="">
-                        </div>
-                        <p class="review-body">
-                            A fantastic addition to my collection! The attention to detail really makes this
-                            design special. I especially love the expressive eyes and the unique leopard-print
-                            appearance. Highly recommended!
-                        </p>
-                    </article>
+                    {% endfor %}
                 </div>
             </div>
-        </div>
-        <div class="pagination-container">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </section>
+            {% if page_obj %}
+                <div class="pagination-container">
+                    <ul class="pagination">
+                        <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+                            <a class="page-link" href="{% if page_obj.has_previous %}?{% change_params page=page_obj.previous_page_number %}{% endif %}#reviews" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% for page in page_obj.paginator.page_range %}
+                            {% if page >= page_obj.number|add:-2 and page <= page_obj.number|add:2 %}
+                                <li class="page-item {% if page_obj.number == page %}active{% endif %}">
+                                    <a class="page-link" href="?{% change_params page=page %}#reviews">{{ page }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                        <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+                            <a class="page-link" href="{% if page_obj.has_next %}?{% change_params page=page_obj.next_page_number %}{% endif %}#reviews" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
+        </section>
+    {% endif %}
     <section class="product-list">
         <div class="product-list-header">
             <h5>Similar items</h5>

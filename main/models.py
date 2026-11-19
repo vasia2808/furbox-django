@@ -1,5 +1,8 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse
+
+from users.models import User
 
 
 class Category(models.Model):
@@ -59,6 +62,14 @@ class ProductImage(models.Model):
     class Meta:
         db_table = 'product_images'
         ordering = ('id',)
+
+
+class Review(models.Model):
+    rating = models.PositiveSmallIntegerField(default=5, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    text = models.TextField(blank=True, null=True)
+    product = models.ForeignKey(to=Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
 
 
 class Banner(models.Model):
