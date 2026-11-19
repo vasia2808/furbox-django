@@ -40,7 +40,7 @@
                             {% endif %}
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="cart.html">Cart</a>
+                            <a class="nav-link" href="{% url "carts:cart" %}">Cart</a>
                         </li>
                     </ul>
                     <form class="d-flex my-2 my-md-0" role="search" action="{% url "main:search" %}" method="get">
@@ -119,8 +119,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-4.0.0.slim.min.js"
-        integrity="sha256-8DGpv13HIm+5iDNWw1XqxgFB4mj+yOKFNb+tHBZOowc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-4.1.0.min.js" integrity="sha256-hjRvPkFLO1JGZFMXGrzdpG6TlsHDyjp4PQeqLWRcMzk=" crossorigin="anonymous"></script>
 
     <script>
         const header = document.querySelector('header');

@@ -64,12 +64,18 @@
                         {{ product.description }}
                     </p>
                     <div class="d-flex gap-3 align-items-end">
-                        <a href="#" class="add-to-wishlist" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                            data-bs-custom-class="custom-tooltip" data-bs-title="Add to wishlist"><img
-                                src="static/images/product/heart.svg" alt=""></a>
-                        <a href="#" class="card-cart" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Add to cart" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                            <a href="{% url "wishlists:wishlist_add" %}" data-product-id="{{ product.id }}" class="add-to-wishlist {% if is_wished %}d-none{% endif %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip" data-bs-title="Add to wishlist"><img
+                                    src="{% static "images/product/heart.svg" %}" alt=""></a>
+                            <a href="{% url "wishlists:wishlist_remove" %}" data-product-id="{{ product.id }}" class="remove-from-wishlist {% if not is_wished %}d-none{% endif %}" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip" data-bs-title="Remove from wishlist"><img
+                                    src="{% static "images/product/heart-fill.svg" %}" alt=""></a>
+                        {% endif %}
+                        <a href="{% url "carts:cart_add" %}" class="card-cart add-to-cart" data-product-id="{{ product.id }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Add to cart" data-bs-toggle="tooltip" data-bs-placement="bottom"
                             data-bs-custom-class="custom-tooltip" data-bs-title="Add to cart"><img
-                                src="static/images/product-card/cart-plus-fill.svg" alt=""></a>
+                                src="{% static "images/product-card/cart-plus-fill.svg" %}" alt=""></a>
                     </div>
                 </div>
             </div>

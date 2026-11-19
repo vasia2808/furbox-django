@@ -1,0 +1,60 @@
+{% load static %}
+{% load carts_tags %}
+
+<section class="cart">
+    <h2>Cart</h2>
+    <hr>
+    {% user_carts request as carts %}
+    <div id="cart-items">
+        {% for cart in carts %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    <a href="#" class="item-link">
+                        <h5 class="card-title">{{ cart.product.name }}</h5>
+                    </a>
+                </div>
+                <div class="card-body">
+                    {% csrf_token %}
+                    <div class="row text-center">
+                        <div class="col">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-outline-primary decrement" data-cart-id="{{ cart.id }}"
+                                    data-cart-change-url="{% url "carts:cart_change" %}">-</button>
+                                <input type="text" class="form-control input card-input number" value="{{ cart.quantity }}" readonly>
+                                <button type="button" class="btn btn-outline-primary increment" data-cart-id="{{ cart.id }}"
+                                    data-cart-change-url="{% url "carts:cart_change" %}">+</button>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <p class="h-100 align-content-center">x <strong>${{ cart.product.sell_price }}</strong> = </p>
+                        </div>
+                        <div class="col">
+                            <p class="h-100 align-content-center"><strong>${{ cart.products_price }}</strong></p>
+                        </div>
+                        <div class="col">
+                            <p class="h-100 align-content-center">
+                                <a href="{% url "carts:cart_remove" %}" class="remove-from-cart" data-cart-id="{{ cart.id }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Remove from cart">
+                                    {% csrf_token %}
+                                    <img class="mx-1" src="{% static "images/cart/trash-fill.svg" %}" alt="Catalog Icon"
+                                        width="16" height="16">
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        
+        <div class="card mb-3">
+            <div class="card-footer">
+                <p>Total:</p>
+                <p><strong>${{ carts.total_price }}</strong></p>
+            </div>
+        </div>
+    </div>
+    {% if carts and not order %}
+        <a class="btn btn-outline-primary" href="create_order.html">
+            Place an order
+        </a>
+    {% endif %}
+</section>

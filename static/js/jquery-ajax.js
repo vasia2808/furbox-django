@@ -179,6 +179,84 @@ $(document).ready(function () {
         });
     }
 
+    $(document).on("click", ".add-to-wishlist", function (e) {
+        e.preventDefault();
+
+        // Получаем id товара из атрибута data-product-id
+        var product_id = $(this).data("product-id");
+
+        // Из атрибута href берем ссылку на контроллер django
+        var add_to_wishlist_url = $(this).attr("href");
+
+        var add_link = $(this);
+        var remove_link = $(".remove-from-wishlist");
+
+        // делаем post запрос через ajax не перезагружая страницу
+        $.ajax({
+            type: "POST",
+            url: add_to_wishlist_url,
+            data: {
+                product_id: product_id,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                // Сообщение
+                successMessage.html(data.message);
+                successMessage.fadeIn(400);
+                // Через 7сек убираем сообщение
+                setTimeout(function () {
+                    successMessage.fadeOut(400);
+                }, 7000);
+
+                add_link.addClass("d-none");
+                remove_link.removeClass("d-none");
+            },
+
+            error: function (data) {
+                console.log("Ошибка при добавлении товара в корзину");
+            },
+        });
+    });
+
+    $(document).on("click", ".remove-from-wishlist", function (e) {
+        e.preventDefault();
+
+        // Получаем id товара из атрибута data-product-id
+        var product_id = $(this).data("product-id");
+
+        // Из атрибута href берем ссылку на контроллер django
+        var add_to_wishlist_url = $(this).attr("href");
+
+        var add_link = $(".add-to-wishlist");
+        var remove_link = $(this);
+
+        // делаем post запрос через ajax не перезагружая страницу
+        $.ajax({
+            type: "POST",
+            url: add_to_wishlist_url,
+            data: {
+                product_id: product_id,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                // Сообщение
+                successMessage.html(data.message);
+                successMessage.fadeIn(400);
+                // Через 7сек убираем сообщение
+                setTimeout(function () {
+                    successMessage.fadeOut(400);
+                }, 7000);
+
+                add_link.removeClass("d-none");
+                remove_link.addClass("d-none");
+            },
+
+            error: function (data) {
+                console.log("Ошибка при добавлении товара в корзину");
+            },
+        });
+    });
+
     // Берем из разметки элемент по id - оповещения от django
     var notification = $('#notification');
     // И через 7 сек. убираем

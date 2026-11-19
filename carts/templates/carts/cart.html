@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "styles/cart.css" %}">
+{% endblock css %}
+
+{% block content %}
+    <div id="cart-items-container">
+        {% include "carts/includes/included_cart.html" %}
+    </div>
+{% endblock content %}

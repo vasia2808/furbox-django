@@ -4,6 +4,7 @@ from django.views.generic import DetailView, ListView, TemplateView
 
 from main.models import Banner, Category, Product, Review
 from main.utils import q_search
+from wishlists.models import WishlistItem
 
 
 class IndexView(TemplateView):
@@ -85,6 +86,13 @@ class ProductView(DetailView):
 
         average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
 
+        user = self.request.user
+
+        is_wished = False
+
+        if user.is_authenticated:
+            is_wished = WishlistItem.objects.filter(user=user, product=product).exists()
+
         paginator = Paginator(reviews, 4)
         page_number = self.request.GET.get('page')
         page_obj = paginator.get_page(page_number)
@@ -94,6 +102,7 @@ class ProductView(DetailView):
         context['reviews'] = page_obj
         context['average_rating'] = average_rating
         context['reviews_count'] = reviews.count()
+        context['is_wished'] = is_wished
         context['page_obj'] = page_obj
         
         return context

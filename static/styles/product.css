@@ -73,7 +73,8 @@
     }
 }
 
-.add-to-wishlist img {
+.add-to-wishlist img,
+.remove-from-wishlist img {
     width: 1.5rem;
 }
 

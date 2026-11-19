@@ -9,7 +9,7 @@
         </a>
         <p class="card-text">{% autoescape off %}{% if product.bodyline %}{{ product.bodyline }}{% else %}{{ product.description }}{% endif %}{% endautoescape %}</p>
         <p class="card-price">${{ product.price }}</p>
-        <a href="#" class="card-cart" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Add to cart"><img src="{% static "images/product-card/cart-plus-fill.svg" %}"
+        <a href="{% url "carts:cart_add" %}" class="card-cart add-to-cart" data-product-id="{{ product.id }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Add to cart">{% csrf_token %}<img src="{% static "images/product-card/cart-plus-fill.svg" %}"
                 alt=""></a>
     </div>
 </div>
