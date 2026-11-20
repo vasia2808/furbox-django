@@ -1,0 +1,62 @@
+[
+    {
+        "model": "main.category",
+        "pk": 1,
+        "fields": {
+            "name": "Full Fursuits",
+            "slug": "full-fursuits",
+            "image": "categories_images/full_fursuit.jpg",
+            "description": "Step into the world of full fursuits—complete, head-to-custom character costumes that bring your fursona to life with incredible detail and craftsmanship"
+        }
+    },
+    {
+        "model": "main.category",
+        "pk": 2,
+        "fields": {
+            "name": "Heads",
+            "slug": "heads",
+            "image": "categories_images/head.avif",
+            "description": "A fully crafted fursuit head that captures your fursona's expression with detailed fur work, expressive eyes, and a comfortable, wearable fit"
+        }
+    },
+    {
+        "model": "main.category",
+        "pk": 3,
+        "fields": {
+            "name": "Ears",
+            "slug": "ears",
+            "image": "categories_images/ears.jpg",
+            "description": "A pair of attachable fursuit ears that add the perfect finishing touch to your character, crafted with detailed fur work and designed for a secure, comfortable fit"
+        }
+    },
+    {
+        "model": "main.category",
+        "pk": 4,
+        "fields": {
+            "name": "Paws",
+            "slug": "paws",
+            "image": "categories_images/paws.jpg",
+            "description": "A pair of fursuit paws that complete your character with detailed fur work, soft padding, and a comfortable fit for both display and wear"
+        }
+    },
+    {
+        "model": "main.category",
+        "pk": 5,
+        "fields": {
+            "name": "Tails",
+            "slug": "tails",
+            "image": "categories_images/tail.jpg",
+            "description": "A fursuit tail that adds expressive movement and character to your costume, crafted with detailed fur work and designed for a secure, comfortable attachment"
+        }
+    },
+    {
+        "model": "main.category",
+        "pk": 6,
+        "fields": {
+            "name": "Ears, Paws and Tail Sets",
+            "slug": "ears-paws-and-tail-sets",
+            "image": "categories_images/ears_paws_tail_set.jpg",
+            "description": "A coordinated fursuit accessory set featuring ears, paws, and a tail, crafted with matching fur work and designed for a secure, comfortable fit to complete your character"
+        }
+    }
+]

@@ -1,0 +1,186 @@
+[
+    {
+        "model": "main.productimage",
+        "pk": 1,
+        "fields": {
+            "image": "products_images/1.webp",
+            "product": 1
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 2,
+        "fields": {
+            "image": "products_images/2.webp",
+            "product": 1
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 3,
+        "fields": {
+            "image": "products_images/3.webp",
+            "product": 1
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 4,
+        "fields": {
+            "image": "products_images/4.webp",
+            "product": 1
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 5,
+        "fields": {
+            "image": "products_images/5.webp",
+            "product": 1
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 8,
+        "fields": {
+            "image": "products_images/polka-dot_chocolate_caramel_mouse_toony_head_fursuit.webp",
+            "product": 3
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 9,
+        "fields": {
+            "image": "products_images/calico_cat_kemono_head_fursuit.webp",
+            "product": 4
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 10,
+        "fields": {
+            "image": "products_images/butterfly_dog_kemono_head_fursuit.webp",
+            "product": 5
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 11,
+        "fields": {
+            "image": "products_images/blue_white_kitten_kemono_head_fursuit.webp",
+            "product": 6
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 12,
+        "fields": {
+            "image": "products_images/wolf_head.jpg",
+            "product": 7
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 13,
+        "fields": {
+            "image": "products_images/fursuit_husky_fox_mascot_head.jpg",
+            "product": 8
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 14,
+        "fields": {
+            "image": "products_images/handmade_furry_fursuit_head.jpg",
+            "product": 9
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 15,
+        "fields": {
+            "image": "products_images/fursuit_kigurumi_headset.avif",
+            "product": 10
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 16,
+        "fields": {
+            "image": "products_images/furry_cosplay_kigurumi_fursuit_head.avif",
+            "product": 11
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 17,
+        "fields": {
+            "image": "products_images/milk_coffee_lamb_kemono_head_fursuit.webp",
+            "product": 12
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 18,
+        "fields": {
+            "image": "products_images/purple_sweet_cool_fox_wolf_kemono_fursuit_head.webp",
+            "product": 13
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 19,
+        "fields": {
+            "image": "products_images/fluffy_fursuit_paws.jpg",
+            "product": 14
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 20,
+        "fields": {
+            "image": "products_images/fox_ears.avif",
+            "product": 15
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 21,
+        "fields": {
+            "image": "products_images/custom_handmade_fursuit_paws.png",
+            "product": 16
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 22,
+        "fields": {
+            "image": "products_images/tri_color_furry_tail.jpg",
+            "product": 17
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 23,
+        "fields": {
+            "image": "products_images/long_fur_husky_dog_fox_mascot_costume.png",
+            "product": 18
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 24,
+        "fields": {
+            "image": "products_images/head_tail_paws.jpg",
+            "product": 19
+        }
+    },
+    {
+        "model": "main.productimage",
+        "pk": 25,
+        "fields": {
+            "image": "products_images/black_wolf_kemono_fursuit_head.webp",
+            "product": 20
+        }
+    }
+]

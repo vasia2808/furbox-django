@@ -1,0 +1,268 @@
+[
+    {
+        "model": "main.product",
+        "pk": 1,
+        "fields": {
+            "name": "LeopardPrint cat Kemono Head Fursuit",
+            "slug": "leopardprint-cat-kemono-head-fursuit",
+            "description": "A leopard-print kemono-style cat fursuit head with a smooth, rounded shape, large expressive eyes, and spotted fur patterns, giving it a playful yet stylish look with a bold, wild appearance.",
+            "price": "990.00",
+            "discount": "0.00",
+            "quantity": 2,
+            "category": 2,
+            "date_added": "2026-11-18T14:02:34.370Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 3,
+        "fields": {
+            "name": "Polka-dot Chocolate Caramel Mousse Toony Head Fursuit",
+            "slug": "polka-dot",
+            "description": "A chocolate caramel mousse toony-style fursuit head with exaggerated, expressive features, a mix of rich chocolate brown and creamy caramel fur, and a playful, cartoonish look that feels sweet and whimsical.",
+            "price": "847.00",
+            "discount": "0.00",
+            "quantity": 7,
+            "category": 2,
+            "date_added": "2026-11-18T14:07:44.869Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 4,
+        "fields": {
+            "name": "Calico Cat Kemono Head Fursuit",
+            "slug": "calico-cat-kemono-head-fursuit",
+            "description": "A calico cat kemono-style fursuit head with a smooth, rounded shape, large expressive eyes, and a patchwork of white, orange, and black fur, giving it a cute and lively appearance with a soft, stylized charm.",
+            "price": "1180.40",
+            "discount": "0.00",
+            "quantity": 1,
+            "category": 2,
+            "date_added": "2026-11-18T14:12:21.212Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 5,
+        "fields": {
+            "name": "Butterfly Dog Kemono Head Fursuit",
+            "slug": "butterfly-dog-kemono-head-fursuit",
+            "description": "A butterfly dog kemono-style fursuit head with a smooth, rounded shape, large expressive eyes, and delicate butterfly-like markings in soft pastel hues, giving it a whimsical, ethereal appearance with a gentle, dreamy charm.",
+            "price": "2050.00",
+            "discount": "0.00",
+            "quantity": 6,
+            "category": 2,
+            "date_added": "2026-11-18T14:13:46.170Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 6,
+        "fields": {
+            "name": "Blue White kitten Kemono Head Fursuit",
+            "slug": "blue-white-kitten-kemono-head-fursuit",
+            "description": "A blue-and-white kitten kemono-style fursuit head with a rounded shape, large expressive eyes, and soft two-tone fur, giving it a cool-toned appearance with a sweet and playful charm.",
+            "price": "904.02",
+            "discount": "0.00",
+            "quantity": 9,
+            "category": 2,
+            "date_added": "2026-11-18T14:15:05.837Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 7,
+        "fields": {
+            "name": "Dark Wolf Head",
+            "slug": "dark-wolf-head",
+            "description": "A dark-furred wolf furry head with piercing red eyes, featuring a sleek, shadowy coat and an intense, mysterious gaze.",
+            "price": "300.00",
+            "discount": "0.00",
+            "quantity": 2,
+            "category": 2,
+            "date_added": "2026-11-18T14:16:36.865Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 8,
+        "fields": {
+            "name": "Fursuit Husky Fox Mascot",
+            "slug": "fursuit-husky-fox-mascot",
+            "description": "A white-furred wolf furry head with bright blue eyes, featuring a soft, snowy coat and a calm, striking gaze.",
+            "price": "347.00",
+            "discount": "0.00",
+            "quantity": 13,
+            "category": 2,
+            "date_added": "2026-11-18T14:17:38.965Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 9,
+        "fields": {
+            "name": "Handmade Furry Fursuit Head",
+            "slug": "handmade-furry-fursuit-head",
+            "description": "A brown-and-white-furred wolf furry head with deep blue eyes, featuring a patched, earthy coat and a steady, thoughtful gaze.",
+            "price": "1200.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 2,
+            "date_added": "2026-11-18T14:18:24.280Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 10,
+        "fields": {
+            "name": "Fursuit Kigurumi Headset",
+            "slug": "fursuit-kigurumi-headset",
+            "description": "A head set featuring pink ears, white fur with soft blue accents, and bright blue eyes, creating a sweet, cool-toned look with a playful contrast.",
+            "price": "1430.00",
+            "discount": "0.00",
+            "quantity": 9,
+            "category": 2,
+            "date_added": "2026-11-18T14:19:33.033Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 11,
+        "fields": {
+            "name": "Furry Cosplay Kigurumi Fursuit Head",
+            "slug": "furry-cosplay-kigurumi-fursuit-head",
+            "description": "A head set featuring blue ears, pink hair, and pink eyes, creating a bold, candy-colored contrast with a playful and vivid appearance.",
+            "price": "1520.00",
+            "discount": "0.00",
+            "quantity": 9,
+            "category": 2,
+            "date_added": "2026-11-18T14:20:16.788Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 12,
+        "fields": {
+            "name": "Milk Coffee Lamb Kemono Head Fursuit",
+            "slug": "milk-coffee-lamb-kemono-head-fursuit",
+            "description": "A brown-and-white lamb head set featuring soft, fluffy fur, rounded ears, and gentle eyes, creating a cozy, cuddly look with a warm two-tone appearance.",
+            "price": "2220.00",
+            "discount": "0.00",
+            "quantity": 16,
+            "category": 2,
+            "date_added": "2026-11-18T14:21:50.085Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 13,
+        "fields": {
+            "name": "Purple Sweet Cool Fox Wolf Kemono Fursuit Head",
+            "slug": "purple-sweet-cool-fox-wolf-kemono-fursuit-head",
+            "description": "A fox head featuring a soft blend of white, pink, and purple fur, with pointed ears and a gentle, whimsical expression that gives it a sweet, pastel-colored charm.",
+            "price": "3320.00",
+            "discount": "0.00",
+            "quantity": 13,
+            "category": 2,
+            "date_added": "2026-11-18T14:22:33.387Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 14,
+        "fields": {
+            "name": "Fluffy Fursuit Paws",
+            "slug": "fluffy-fursuit-paws",
+            "description": "A pair of white furry paws with soft, plush fur and rounded toes, featuring gentle pink pads and a clean, fluffy appearance that feels cozy and cute.",
+            "price": "55.33",
+            "discount": "0.00",
+            "quantity": 16,
+            "category": 4,
+            "date_added": "2026-11-19T20:02:38.991Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 15,
+        "fields": {
+            "name": "Golden Fox Ears",
+            "slug": "golden-fox-ears",
+            "description": "A pair of faux fox ears with soft, fluffy fur and pointed tips, featuring a warm orange hue with white inner fluff and subtle darker edges for a natural, lively look.",
+            "price": "99.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 3,
+            "date_added": "2026-11-19T20:04:20.522Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 16,
+        "fields": {
+            "name": "Custom Handmade Fursuit Paws",
+            "slug": "custom-handmade-fursuit-paws",
+            "description": "A pair of gray furry paws with dense, silvery fur and rounded toes, featuring soft dark pads and a subtle, smoky appearance that feels sleek and understated.",
+            "price": "110.40",
+            "discount": "0.00",
+            "quantity": 13,
+            "category": 4,
+            "date_added": "2026-11-19T20:05:33.194Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 17,
+        "fields": {
+            "name": "Tri Color Furry Tail",
+            "slug": "tri-color-furry-tail",
+            "description": "A tricolor wolf furry tail featuring bands of white, gray, and black fur that blend seamlessly from base to tip, giving it a natural, wild look.",
+            "price": "82.02",
+            "discount": "0.00",
+            "quantity": 11,
+            "category": 5,
+            "date_added": "2026-11-19T20:07:34.113Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 18,
+        "fields": {
+            "name": "Long Fur Husky Dog Fox Mascot Costume",
+            "slug": "long-fur-husky-dog-fox-mascot-costume",
+            "description": "A long-fur husky dog fox mascot costume with thick, fluffy fur, a classic gray-and-white husky coat, and a foxy pointed-ear silhouette, giving it a wild yet huggable look with a plush, textured appearance.",
+            "price": "2100.00",
+            "discount": "0.00",
+            "quantity": 14,
+            "category": 1,
+            "date_added": "2026-11-19T20:10:18.655Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 19,
+        "fields": {
+            "name": "Head, Tail & Paws",
+            "slug": "head-tail-paws",
+            "description": "A matching set of head, tail, and paws in white, yellow, and blue, featuring soft fluffy fur with bright, cheerful color accents that give the whole kit a playful, sunny appearance.",
+            "price": "4570.00",
+            "discount": "0.00",
+            "quantity": 19,
+            "category": 6,
+            "date_added": "2026-11-19T20:11:42.496Z"
+        }
+    },
+    {
+        "model": "main.product",
+        "pk": 20,
+        "fields": {
+            "name": "Black Wolf Kemono Fursuit Head",
+            "slug": "black-wolf-kemono-fursuit-head",
+            "description": "A black kemono-style wolf fursuit head with a smooth, rounded shape, large expressive eyes, and soft dark fur, giving it a cute yet mysterious look with a sleek, stylized appearance.",
+            "price": "1060.00",
+            "discount": "0.00",
+            "quantity": 17,
+            "category": 2,
+            "date_added": "2026-11-19T20:13:05.695Z"
+        }
+    }
+]

@@ -10,6 +10,13 @@ from main.models import Banner, Category, Product, Review
 from main.utils import q_search
 from wishlists.models import WishlistItem
 
+from main.services import (
+    get_bestsellers,
+    get_new_items,
+    get_recommendations,
+    get_related_products
+)
+
 
 class IndexView(TemplateView):
     template_name = 'main/index.html'
@@ -19,6 +26,9 @@ class IndexView(TemplateView):
         banners = Banner.objects.all()
         context['title'] = 'FurBox - Your Furry Shop'
         context['banners'] = banners
+        context['recommended_products'] = get_recommendations(self.request.user)
+        context['bestsellers'] = get_bestsellers()
+        context['new_items'] = get_new_items()
         return context
 
 
@@ -108,6 +118,7 @@ class ProductView(DetailView):
         context['reviews_count'] = reviews.count()
         context['is_wished'] = is_wished
         context['page_obj'] = page_obj
+        context['related_products'] = get_related_products(product)
         
         return context
 
