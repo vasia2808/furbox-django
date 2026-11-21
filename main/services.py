@@ -54,7 +54,7 @@ def get_new_items(limit=8):
 
 def get_recommendations(user, limit=8):
     if not user.is_authenticated:
-        return get_bestsellers(limit)
+        return None
 
     orders = valid_sales().filter(
         order__user=user
@@ -75,7 +75,7 @@ def get_recommendations(user, limit=8):
     )
 
     if not category_ids:
-        return get_bestsellers(limit)
+        return None
 
     # Товары, которые пользователь уже покупал
     purchased_ids = orders.values_list(

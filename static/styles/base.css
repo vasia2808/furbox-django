@@ -180,6 +180,9 @@ footer {
 .btn-outline-primary {
     --bs-btn-padding-y: 0.25rem;
     --bs-btn-padding-x: 0.7rem;
+    --bs-btn-active-color: var(--header-bg);
+    --bs-btn-active-bg: var(--button);      /* Tap background color */
+    --bs-btn-active-border-color: var(--button);
     border-width: var(--border-width);
     border-radius: var(--border-radius);
     border-color: var(--button);
@@ -187,10 +190,13 @@ footer {
     font-weight: bold;
 
     &:hover,
+    &:focus,
+    &.active,
     &:active:focus {
         border-color: var(--button);
         background-color: var(--button);
         color: var(--header-bg);
+        box-shadow: none;
     }
 }
 
@@ -204,6 +210,7 @@ footer {
     font-weight: bold;
 
     &:hover,
+    &:focus,
     &:active:focus {
         border-color: var(--text);
         background-color: var(--text);

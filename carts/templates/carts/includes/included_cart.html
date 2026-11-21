@@ -16,7 +16,7 @@
                 <div class="card-body">
                     {% csrf_token %}
                     <div class="row text-center">
-                        <div class="col">
+                        <div class="col-6 col-sm-3">
                             <div class="input-group">
                                 <button type="button" class="btn btn-outline-primary decrement" data-cart-id="{{ cart.id }}"
                                     data-cart-change-url="{% url "carts:cart_change" %}">-</button>
@@ -25,13 +25,13 @@
                                     data-cart-change-url="{% url "carts:cart_change" %}">+</button>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="d-none d-sm-block col-sm-3">
                             <p class="h-100 align-content-center">x <strong>${{ cart.product.sell_price }}</strong> = </p>
                         </div>
-                        <div class="col">
+                        <div class="col-4 col-sm-3">
                             <p class="h-100 align-content-center"><strong>${{ cart.products_price }}</strong></p>
                         </div>
-                        <div class="col">
+                        <div class="col-2 col-sm-3">
                             <p class="h-100 align-content-center">
                                 <a href="{% url "carts:cart_remove" %}" class="remove-from-cart" data-cart-id="{{ cart.id }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="Remove from cart">
                                     {% csrf_token %}
